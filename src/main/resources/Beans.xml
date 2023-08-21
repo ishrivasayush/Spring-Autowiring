@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!-- Setter Injection
+    <bean id="stu" class="org.example.Student">
+        <property name="id" value="501"> </property>
+        <property name="mathCheat">
+            <bean class="org.example.MathCheat">
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="anotherStudent" class="org.example.AnotherStudent">
+        <property name="mathCheat">
+            <bean class="org.example.MathCheat">
+            </bean>
+        </property>
+    </bean>
+   -->
+
+    <!-- Optimization
+    Spring makes the Application Light weighted
+    -->
+    <bean id="mathCheadDemo" class="org.example.MathCheat">
+    </bean>
+        <bean id="stu" class="org.example.Student">
+            <property name="id" value="501"> </property>
+            <property name="mathCheat" ref="mathCheadDemo" />
+
+
+        </bean>
+
+        <bean id="anotherStudent" class="org.example.AnotherStudent">
+            <property name="mathCheat" ref="mathCheadDemo" />
+        </bean>
+
+
+
+        <!-- Constructor Injection
+       <bean id="stu" class="org.example.Student">
+           <constructor-arg name="id" value="501"> </constructor-arg>
+           <constructor-arg name="mathCheat">
+               <bean class="org.example.MathCheat">
+               </bean>
+           </constructor-arg>
+       </bean>
+       -->
+
+
+
+</beans>
