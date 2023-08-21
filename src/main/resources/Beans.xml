@@ -1,55 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- bean definitions here -->
-    <!-- Setter Injection
-    <bean id="stu" class="org.example.Student">
-        <property name="id" value="501"> </property>
-        <property name="mathCheat">
-            <bean class="org.example.MathCheat">
-            </bean>
-        </property>
+<context:annotation-config>
+
+</context:annotation-config>
+<!--    <bean id="yourHeart" class="org.example.Heart"> </bean>-->
+<!--    <bean id="human" class="org.example.Human">-->
+<!--        <property name="heart" ref="yourHeart" />-->
+<!--    </bean>-->
+
+
+        <!--
+        <bean id="heart" class="org.example.Heart"> </bean>
+        <bean id="human" class="org.example.Human" autowire="byName" >
+        </bean>
+        -->
+
+    <!-- class name same as byType if id is different
+    <bean id="heartObject" class="org.example.Heart"> </bean>
+    <bean id="human" class="org.example.Human" autowire="byType" >
     </bean>
-
-    <bean id="anotherStudent" class="org.example.AnotherStudent">
-        <property name="mathCheat">
-            <bean class="org.example.MathCheat">
-            </bean>
-        </property>
-    </bean>
-   -->
-
-    <!-- Optimization
-    Spring makes the Application Light weighted
     -->
-    <bean id="mathCheadDemo" class="org.example.MathCheat">
+
+    <!--By using the Constructor
+    <bean id="heartObject" class="org.example.Heart"> </bean>
+    <bean id="human" class="org.example.Human" autowire="constructor" >
+    </bean> -->
+
+
+    <bean id="auctopusHeart" class="org.example.Heart">
+        <property name="nameOfAnimal" value="Autopus"/>
+        <property name="noOfHeart" value="3"/>
     </bean>
-        <bean id="stu" class="org.example.Student">
-            <property name="id" value="501"> </property>
-            <property name="mathCheat" ref="mathCheadDemo" />
 
+    <bean id="humanHeart" class="org.example.Heart">
+    <property name="nameOfAnimal" value="Human"/>
+    <property name="noOfHeart" value="1"/>
+    </bean>
 
-        </bean>
-
-        <bean id="anotherStudent" class="org.example.AnotherStudent">
-            <property name="mathCheat" ref="mathCheadDemo" />
-        </bean>
-
-
-
-        <!-- Constructor Injection
-       <bean id="stu" class="org.example.Student">
-           <constructor-arg name="id" value="501"> </constructor-arg>
-           <constructor-arg name="mathCheat">
-               <bean class="org.example.MathCheat">
-               </bean>
-           </constructor-arg>
-       </bean>
-       -->
-
-
+    <bean id="human" class="org.example.Human" >
+    </bean>
 
 </beans>
